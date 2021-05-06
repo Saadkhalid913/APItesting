@@ -52,7 +52,7 @@ app.delete("/api/items/:id", (req,res) => {
   const indexOfItem = ListItems.findIndex(i => i.id === id);
   const item = ListItems[indexOfItem]
   if (!item) 
-    return res.status(400).send("Bad id")
+    return res.status(400).send("invalid id")
   res.send(item)
   ListItems.splice(indexOfItem,1);
 })
