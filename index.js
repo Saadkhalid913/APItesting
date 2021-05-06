@@ -47,6 +47,16 @@ app.post("/api/items/", (req, res) => {
   console.log(ListItems)
 })
 
+app.delete("/api/items/:id", (req,res) => {
+  const id = parseInt(req.params.id);
+  const indexOfItem = ListItems.findIndex(i => i.id === id);
+  const item = ListItems[indexOfItem]
+  if (!item) 
+    return res.status(400).send("Bad id")
+  res.send(item)
+  ListItems.splice(indexOfItem,1);
+})
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (req, res) => {console.log("Listening on " + PORT)})
