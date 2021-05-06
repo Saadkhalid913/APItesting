@@ -46,3 +46,12 @@
   width: 85%;
   margin-top: 50px;
 }
+
+.to-do-list li {
+  height: 5em;
+  display: flex;
+  background-color: #8de4ff;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-between;
+}
