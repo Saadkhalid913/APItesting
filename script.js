@@ -1,5 +1,11 @@
-function AddListItem(Text) {
-  const id = CreateNewRandomID()
+class ListItem {
+  constructor(text, id) {
+    this.id = id 
+    this.text = text
+  }
+}
+
+function AddListItem(Text, id) {
   const ToDoList = document.getElementById("to-do-list");
   const newListItem = document.createElement("li")
   const textnode = document.createTextNode(Text);
@@ -15,8 +21,23 @@ function AddListItem(Text) {
   
   ToDoList.appendChild(newListItem);
   return;
-
 }
+
+function UploadListItem(text) {
+  const newItem = new ListItem(text)
+  console.log("Uploading...")
+  return CreateNewRandomID()
+}
+
+
+document.getElementById("submit").addEventListener("click", () => {
+  const text = document.getElementById("main-text").value
+  document.getElementById("main-text").value = ""
+
+  id = UploadListItem(text)
+  AddListItem(text, id)
+
+})
 
 function CreateNewRandomID() {
   return Date.now() 

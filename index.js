@@ -2,7 +2,7 @@ const express = require("express");
 const ListItem = require("./ListItem")
 const app = express();
 
-let MAX_ID = 10
+let MAX_ID = 0
 
 let ListItems = [
   
@@ -35,13 +35,14 @@ app.put("/api/items/:id", (req, res) => {
   if (!item) 
     return res.status(404).send("Invalid id parameter")
 
-  ListItems[item] = new ListItem(req.body, MAX_ID + 1)
+  const OldItem = ListItems[item]
+  ListItems[item] = new ListItem(req.body.text, OldItem.id)
   res.send(ListItems[item])
   console.log(ListItems)
 })
 
 app.post("/api/items/", (req, res) => {
-  const newItem = new ListItem(req.body, MAX_ID++)
+  const newItem = new ListItem(req.body.text, MAX_ID++)
   res.send(newItem)
   ListItems.push(newItem)
   console.log(ListItems)

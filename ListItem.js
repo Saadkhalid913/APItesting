@@ -1,10 +1,7 @@
-class ListItem {
-  constructor(obj, id) {
-    let {name, author, body} = obj
-    this.name = name 
-    this.body = body 
-    this.author = author
+export class ListItem {
+  constructor(text, id) {
     this.id = id 
+    this.text = text
   }
 }
 
