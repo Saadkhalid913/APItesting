@@ -42,3 +42,18 @@ document.getElementById("submit").addEventListener("click", () => {
 function CreateNewRandomID() {
   return Date.now() 
 }
+
+
+// under development 
+
+// function GetItem(id) {
+//   fetch("https://google.ca", {
+//     headers: {
+//       "Access-Control-Allow-Origin": "*"
+//     }
+//   })
+
+//   .then(res => res.json())
+//   .then(js => console.log(js))
+//   .catch(err => console.log(new Error("error")))
+// }

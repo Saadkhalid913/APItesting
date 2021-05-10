@@ -2,10 +2,10 @@ const express = require("express");
 const ListItem = require("./ListItem")
 const app = express();
 
-let MAX_ID = 0
+let MAX_ID = 1
 
 let ListItems = [
-  
+  new ListItem("hello", 1)
 ]
 
 // middlewear 
@@ -22,7 +22,7 @@ app.get("/api/items/:id", (req,res) => {
   const item = ListItems.find(i => i.id === id)
   if (!item) 
   return res.status(404).send("Invalid id parameter")
-  res.send(item)
+  res.send(JSON.stringify(item))
 })
 
 app.put("/api/items/:id", (req, res) => {
@@ -61,4 +61,5 @@ app.delete("/api/items/:id", (req,res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (req, res) => {console.log("Listening on " + PORT)})
+
 

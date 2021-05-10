@@ -1,4 +1,4 @@
-export class ListItem {
+class ListItem {
   constructor(text, id) {
     this.id = id 
     this.text = text
