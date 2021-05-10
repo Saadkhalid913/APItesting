@@ -12,19 +12,23 @@ let ListItems = [
 app.use(express.json())
 
 
+// get all 
 app.get("/api/items" , (req, res) => {
   res.send(ListItems)
   console.log(ListItems)
 })
 
+//get item 
 app.get("/api/items/:id", (req,res) => {
   const id = parseInt(req.params.id) 
   const item = ListItems.find(i => i.id === id)
   if (!item) 
   return res.status(404).send("Invalid id parameter")
-  res.send(JSON.stringify(item))
+  res.send(item)
 })
 
+
+// put item
 app.put("/api/items/:id", (req, res) => {
   console.log("putting")
   const id = parseInt(req.params.id)
@@ -41,6 +45,8 @@ app.put("/api/items/:id", (req, res) => {
   console.log(ListItems)
 })
 
+
+// post item 
 app.post("/api/items/", (req, res) => {
   const newItem = new ListItem(req.body.text, MAX_ID++)
   res.send(newItem)
@@ -48,6 +54,7 @@ app.post("/api/items/", (req, res) => {
   console.log(ListItems)
 })
 
+// delete item 
 app.delete("/api/items/:id", (req,res) => {
   const id = parseInt(req.params.id);
   const indexOfItem = ListItems.findIndex(i => i.id === id);
