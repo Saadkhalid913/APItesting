@@ -46,14 +46,9 @@ function CreateNewRandomID() {
 
 // under development 
 
-// function GetItem(id) {
-//   fetch("https://google.ca", {
-//     headers: {
-//       "Access-Control-Allow-Origin": "*"
-//     }
-//   })
-
-//   .then(res => res.json())
-//   .then(js => console.log(js))
-//   .catch(err => console.log(new Error("error")))
-// }
+function GetItem(id) {
+  fetch("http://localhost:3000/api/items/1")
+  .then(res => res.json())
+  .then(js => console.log(js))
+  .catch(err => console.log(new Error("error")))
+}

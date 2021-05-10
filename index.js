@@ -24,6 +24,8 @@ app.get("/api/items/:id", (req,res) => {
   const item = ListItems.find(i => i.id === id)
   if (!item) 
   return res.status(404).send("Invalid id parameter")
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   res.send(item)
 })
 
